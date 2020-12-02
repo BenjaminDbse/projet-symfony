@@ -34,7 +34,7 @@ class ProgramController extends AbstractController
      * @param int $id
      * @return Response
      */
-    public function show(int $id = 1): Response
+    public function show(int $id): Response
     {
         $program = $this->getDoctrine()
             ->getRepository(Program::class)
