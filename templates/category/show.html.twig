@@ -8,10 +8,10 @@
         <div>
             <h2>{{ program.id }}-{{ program.title }}</h2>
             <p>{{ program.summary }}</p>
-            <a href="{{ path("program_show", { id: program.id }) }}">Voir la fiche</a>
+            <a class="btn btn-secondary" href="{{ path("program_show", { id: program.id }) }}">Voir la fiche</a>
         </div>
         {% else %}
             Aucune série trouvée pour la category {{ category.name }}.
     {% endfor %}
-    <a href="{{ path('app_index') }}">Retour à l'accueil</a>
+    <a class="btn btn-primary" href="{{ path('app_index') }}">Retour à l'accueil</a>
 {% endblock %}
