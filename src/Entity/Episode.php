@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\EpisodeRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=EpisodeRepository::class)
@@ -20,11 +21,13 @@ class Episode
     /**
      * @ORM\ManyToOne(targetEntity=Season::class, inversedBy="episodes")
      * @ORM\JoinColumn(nullable=false)
+     * @Assert\NotBlank
      */
     private $season;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Length (max="255")
      */
     private $title;
 
