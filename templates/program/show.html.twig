@@ -15,6 +15,14 @@
                 <li><a class="btn btn-secondary" href="{{ path('program_season_show', {programId: program.id, seasonId: season.id}) }}">Saison {{ season.number }}</a></li>
             {% endfor %}
             </ul>
+            <h2>Acteurs :</h2>
+            <ul>
+                {% for actor in program.actors %}
+                    <li><p><a href="{{ path("actor_show", { id: actor.id }) }}" >{{ actor.name }}</a></p> </li>
+                {% else %}
+                    <li>Aucun acteur pour cette série</li>
+                {% endfor %}
+            </ul>
             <a class="btn btn-primary" href="{{ path('program_index') }}">Retour à la liste des programmes</a>
         </div>
     </div>

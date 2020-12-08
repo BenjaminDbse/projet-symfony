@@ -20,14 +20,14 @@ class Program
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    private $id;
+    private ?int $id;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank
      * @Assert\Length (max="255")
      */
-    private $title;
+    private ?string $title;
 
     /**
      * @ORM\Column(type="text")
@@ -39,40 +39,46 @@ class Program
      * )
      *
      */
-    private $summary;
+    private ?string $summary;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      * @Assert\Length (max="255")
      */
-    private $poster;
+    private ?string $poster;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="programs")
      * @ORM\JoinColumn(nullable=false)
      * @Assert\NotBlank
      */
-    private $category;
+    private ?Category $category;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\Length (max="255")
      */
-    private $country;
+    private ?string $country;
 
     /**
      * @ORM\Column(type="integer")
      */
-    private $year;
+    private ?int $year;
 
     /**
      * @ORM\OneToMany(targetEntity=Season::class, mappedBy="program_id")
      */
     private $number;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=Actor::class, mappedBy="programs")
+     */
+    private $actors;
+
     public function __construct()
     {
         $this->number = new ArrayCollection();
+        $this->actors = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -177,6 +183,33 @@ class Program
             if ($number->getProgramId() === $this) {
                 $number->setProgramId(null);
             }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Actor[]
+     */
+    public function getActors(): Collection
+    {
+        return $this->actors;
+    }
+
+    public function addActor(Actor $actor): self
+    {
+        if (!$this->actors->contains($actor)) {
+            $this->actors[] = $actor;
+            $actor->addProgram($this);
+        }
+
+        return $this;
+    }
+
+    public function removeActor(Actor $actor): self
+    {
+        if ($this->actors->removeElement($actor)) {
+            $actor->removeProgram($this);
         }
 
         return $this;
