@@ -21,6 +21,7 @@ class Actor
     private $name;
     /**
      * @ORM\ManyToMany(targetEntity=Program::class, inversedBy="actors")
+     *
      */
     private $programs;
     public function __construct()
