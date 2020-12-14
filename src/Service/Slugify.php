@@ -9,10 +9,7 @@ class Slugify{
         $input = strtr(utf8_decode($input),
             utf8_decode('àáâãäçèéêëìíîïñòóôõöùúûüýÿÀÁÂÃÄÇÈÉÊËÌÍÎÏÑÒÓÔÕÖÙÚÛÜÝ'),
             'aaaaaceeeeiiiinooooouuuuyyAAAAACEEEEIIIINOOOOOUUUUY');
-
-      $input = preg_replace('/[\.\,\/\#\!\$\%\\\\&\*\;\:\{\}\=\_\`\~\(\)]+/','',$input);
-
-        ;
-        return  str_replace('+','-',urlencode(mb_strtolower($input)));
+        $input = preg_replace('/[\.\,\/\#\!\$\%\\\\&\*\;\:\{\}\=\_\`\+\~\-{2}\?\(\)]+/','',$input);
+        return  str_replace(' ','-',trim(mb_strtolower($input)));
     }
 }
