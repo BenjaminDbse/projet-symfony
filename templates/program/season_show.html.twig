@@ -6,9 +6,9 @@
     <p>Liste des épisodes :</p>
     <ul>
         {% for episode in episodes %}
-            <li><a href="{{ path('program_episode_show', {program: program.id, season: season.id, episode: episode.id}) }}">Episode {{ episode.number }}: {{ episode.title }}</a></li>
+            <li><a href="{{ path('program_episode_show', {program_slug: program.slug, season: season.id, episode_slug: episode.slug}) }}">Episode {{ episode.number }}: {{ episode.title }}</a></li>
             <p>{{ episode.summary }}</p>
         {% endfor %}
     </ul>
-    <a class="btn btn-primary" href="{{ path("program_show", { program_id: program.id }) }}">Retour à la fiche</a>
+    <a class="btn btn-primary" href="{{ path("program_show", { 'slug': program.slug }) }}">Retour à la fiche</a>
 {% endblock %}
