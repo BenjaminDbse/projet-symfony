@@ -1,0 +1,9 @@
+{% extends 'LayoutEmail.html.twig' %}
+
+{% block body %}
+        <h1 style=" color: #F07D12; text-align: center;">New episode {{ episode.title }} created</h1>
+        <p style=" color: #69696B;">Hello, the new episode n°{{ episode.number}} has been created on Wild Series</p>
+        <p style=" color: #69696B;">Summary : {{episode.summary }}</p>
+        <a style=" color: #69696B; text-decoration: none;" href="https://localhost:8001/programs/{{ episode.season.program.slug }}/seasons/{{ episode.season.id }}/episodes/{{ episode.slug }}">Look this</a>
+        <p style=" color: #69696B;">Program's : {{ episode.season.program.title }}</p>
+{% endblock %}
