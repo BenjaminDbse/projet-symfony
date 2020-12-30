@@ -1,7 +1,31 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-<h1>Liste des épisodes de la saison {{ season.number}} de {{ program.title }}</h1>
+        <h1>Liste des épisodes de la saison {{ season.number}} de {{ program.title }}</h1>
         <h2>Épisode {{ episode.number }} {{ episode.title }}</h2>
         <p>{{ episode.summary }}</p>
+        <h3>Commentaire:</h3>
+        {% for comment in episode.comments %}
+                <div class="container-fluid">
+                        <div class="card">
+                                <p>author: {{ comment.author.email }}</p>
+                                <p>commentaire: {{ comment.comment }}</p>
+                                <p>rate : {{ comment.rate }}</p>
+                                {% if app.user %}
+                                        {% if is_granted("ROLE_ADMIN") or app.user.email == comment.author.email %}
+                                                {{ include('program/_delete_comment.html.twig') }}
+                                        {% endif %}
+                                {% endif %}
+                        </div>
+                </div>
+        {% endfor %}
+        <h3>Laisser un commentaire:</h3>
+        {% if app.user %}
+                {{ form_start(form) }}
+                {{ form_widget(form) }}
+                <button class="btn btn-secondary">{{ button_label|default('Add comment') }}</button>
+                {{ form_end(form) }}
+        {% else %}
+                <a href="{{ path('app_login') }}"> Se connecter pour laisser un commentaire</a>
+        {% endif %}
 {% endblock %}
