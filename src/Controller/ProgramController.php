@@ -8,6 +8,8 @@ use App\Entity\season;
 use App\Entity\Program;
 use App\Form\ProgramType;
 use App\Form\CommentType;
+use App\Form\SearchProgramFormType;
+use App\Repository\ProgramRepository;
 use App\Service\Slugify;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -17,6 +19,7 @@ use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Mime\Email;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 /**
  * Class ProgramController
@@ -26,17 +29,32 @@ use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 class ProgramController extends AbstractController
 {
     /**
+     * @param Request $request
+     * @param ProgramRepository $programRepository
+     * @param SessionInterface $session
      * @return Response
      * @Route ("/", name="index")
      */
-    public function index(): Response
+    public function index(Request $request, ProgramRepository $programRepository, SessionInterface $session): Response
     {
-        $programs = $this->getDoctrine()
-            ->getRepository(Program::class)
-            ->findAll();
+        if (!$session->has('total')) {
+            $session->set('total', 0);
+        }
+        $total = $session->get('total');
+
+        $form = $this->createForm(SearchProgramFormType::class);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $search = $form->getData()['search'];
+            $programs = $programRepository->findLikeName($search);
+        } else {
+            $programs = $programRepository->findAll();
+        }
 
         return $this->render('program/index.html.twig', [
             'programs' => $programs,
+            'form' => $form->createView(),
         ]);
     }
 
@@ -63,6 +81,7 @@ class ProgramController extends AbstractController
 
             $entityManager->persist($program);
             $entityManager->flush();
+            $this->addFlash('success', 'The new program has been created');
 
             $email = (new Email())
                 ->from($this->getParameter('mailer_from'))
@@ -170,6 +189,8 @@ class ProgramController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
+            $this->addFlash('success', 'The program has been modified');
+
 
             return $this->redirectToRoute('program_index');
         }
@@ -191,6 +212,8 @@ class ProgramController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($program);
             $entityManager->flush();
+            $this->addFlash('danger', 'The program has been removed');
+
         }
 
         return $this->redirectToRoute('program_index');
@@ -207,6 +230,8 @@ class ProgramController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($comment);
             $entityManager->flush();
+            $this->addFlash('danger', 'The comment has been removed');
+
         }
         return $this->redirectToRoute('program_index');
     }
