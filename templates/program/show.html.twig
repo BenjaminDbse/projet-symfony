@@ -23,6 +23,9 @@
                     <li>Aucun acteur pour cette série</li>
                 {% endfor %}
             </ul>
+            {% if is_granted("ROLE_ADMIN") %}
+                <a class="btn btn-secondary" href="{{ path('program_edit', { 'slug': program.slug} ) }}">Éditer</a>
+            {%endif%}
             <a class="btn btn-primary" href="{{ path('program_index') }}">Retour à la liste des programmes</a>
         </div>
     </div>

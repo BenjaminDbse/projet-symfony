@@ -19,5 +19,7 @@
     {% else %}
         Aucune série trouvée.
     {% endfor %}
+    <a class="btn btn-secondary" href="{{ path('program_new') }}">Add Program</a>
+
     <a class="btn btn-primary" href="{{ path('app_index') }}">Retour à l'accueil</a>
 {% endblock %}
