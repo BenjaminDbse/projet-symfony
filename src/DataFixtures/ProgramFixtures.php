@@ -63,7 +63,7 @@ class ProgramFixtures extends Fixture implements DependentFixtureInterface
        ],
 
    ];
-   private $slugify;
+   private Slugify $slugify;
 
    public function __construct(Slugify $slugify)
    {

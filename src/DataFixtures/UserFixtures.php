@@ -18,18 +18,16 @@ class UserFixtures extends Fixture
 
     public function load(ObjectManager $manager)
     {
-        // $product = new Product();
-        // $manager->persist($product);
-        // Création d’un utilisateur de type “contributeur” (= auteur)
+
         $contributor = new User();
         $contributor->setEmail('contributor@monsite.com');
         $contributor->setRoles(['ROLE_CONTRIBUTOR']);
         $contributor->setPassword($this->passwordEncoder->encodePassword(
             $contributor, 'contributorpassword'
         ));
+        $this->addReference('contributor', $contributor);
         $manager->persist($contributor);
 
-        // Création d’un utilisateur de type “administrateur”
 
         $admin = new User();
         $admin->setEmail('admin@monsite.com');
@@ -37,6 +35,7 @@ class UserFixtures extends Fixture
         $admin->setPassword($this->passwordEncoder->encodePassword(
             $admin, 'adminpassword'
         ));
+        $this->addReference('admin', $admin);
         $manager->persist($admin);
         $manager->flush();
     }

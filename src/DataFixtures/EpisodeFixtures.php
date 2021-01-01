@@ -13,7 +13,7 @@ use Faker;
 class EpisodeFixtures extends Fixture implements DependentFixtureInterface
 
 {
-    private $slugify;
+    private Slugify $slugify;
 
     public function __construct(Slugify $slugify)
     {
