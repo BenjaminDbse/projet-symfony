@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="fr" target-language="fr" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="KA1Eqx6" resname="welcome">
+        <source>welcome</source>
+        <target>Bienvenue</target>
+      </trans-unit>
+      <trans-unit id="tTGBpNh" resname="My account">
+        <source>My account</source>
+        <target>Mon Compte</target>
+      </trans-unit>
+      <trans-unit id="OXfTUpb" resname="Categorie">
+        <source>Categorie</source>
+        <target>Nos Catégories</target>
+      </trans-unit>
+      <trans-unit id="qCleCP9" resname="Series">
+        <source>Series</source>
+        <target>Nos séries</target>
+      </trans-unit>
+      <trans-unit id=".euuMDh" resname="programs">
+        <source>programs</source>
+        <target>Serie</target>
+      </trans-unit>
+      <trans-unit id="AGfGwxl" resname="List actor">
+        <source>List actor</source>
+        <target>Liste d'acteurs</target>
+      </trans-unit>
+      <trans-unit id="UMnErrQ" resname="actor">
+        <source>actor</source>
+        <target>Acteur</target>
+      </trans-unit>
+      <trans-unit id="nVCXqDc" resname="All categories">
+        <source>All categories</source>
+        <target>Toutes les catégories</target>
+      </trans-unit>
+      <trans-unit id="2TS2zzk" resname="Look category">
+        <source>Look category</source>
+        <target>Voir la catégorie</target>
+      </trans-unit>
+      <trans-unit id="WsZ8T0s" resname="no category">
+        <source>no category</source>
+        <target>Aucune catégorie trouvée</target>
+      </trans-unit>
+      <trans-unit id="V5YpIp1" resname="return accueil">
+        <source>return accueil</source>
+        <target>Retourner à l'accueil</target>
+      </trans-unit>
+      <trans-unit id="7bLNO3T" resname="category">
+        <source>category</source>
+        <target>Catégorie</target>
+      </trans-unit>
+      <trans-unit id="truODhM" resname="All programs of category">
+        <source>All programs of category</source>
+        <target>Tous les programmes de la catégorie</target>
+      </trans-unit>
+      <trans-unit id="PAHroRn" resname="look">
+        <source>look</source>
+        <target>Voir</target>
+      </trans-unit>
+      <trans-unit id="qrK92G3" resname="not programs found for category">
+        <source>not programs found for category</source>
+        <target>Aucune série trouvée pour la category</target>
+      </trans-unit>
+      <trans-unit id="5qi3oAN" resname="episode's list">
+        <source>episode's list</source>
+        <target>Liste des épisodes de la saison</target>
+      </trans-unit>
+      <trans-unit id="KDkdO8Z" resname="of">
+        <source>of</source>
+        <target>de</target>
+      </trans-unit>
+      <trans-unit id="K0JE_yZ" resname="comments">
+        <source>comments</source>
+        <target>Commentaires</target>
+      </trans-unit>
+      <trans-unit id="Y2SFhol" resname="author">
+        <source>author</source>
+        <target>Auteur</target>
+      </trans-unit>
+      <trans-unit id="xEuy.VF" resname="comment">
+        <source>comment</source>
+        <target>commentaire</target>
+      </trans-unit>
+      <trans-unit id="xUl3nXn" resname="rate">
+        <source>rate</source>
+        <target>Note</target>
+      </trans-unit>
+      <trans-unit id="KxqReHl" resname="add comment">
+        <source>add comment</source>
+        <target>Ajouter un commentaire</target>
+      </trans-unit>
+      <trans-unit id="J84dG.Q" resname="send">
+        <source>send</source>
+        <target>envoyer</target>
+      </trans-unit>
+      <trans-unit id="aPoIF6_" resname="all programs">
+        <source>all programs</source>
+        <target>Toutes les séries</target>
+      </trans-unit>
+      <trans-unit id="JBkykGe" resname="search">
+        <source>search</source>
+        <target>Rechercher</target>
+      </trans-unit>
+      <trans-unit id="NjpcGm6" resname="programs not found">
+        <source>programs not found</source>
+        <target>Aucune série trouvée</target>
+      </trans-unit>
+      <trans-unit id="CSMBkgA" resname="add program">
+        <source>add program</source>
+        <target>Ajouter une série</target>
+      </trans-unit>
+      <trans-unit id="DKCU0Wh" resname="episode list">
+        <source>episode list</source>
+        <target>Liste des episodes</target>
+      </trans-unit>
+      <trans-unit id="fkFOasQ" resname="episode">
+        <source>episode</source>
+        <target>episode</target>
+      </trans-unit>
+      <trans-unit id="3Glq.Mx" resname="return list">
+        <source>return list</source>
+        <target>Retour à la liste</target>
+      </trans-unit>
+      <trans-unit id="uhofSqx" resname="serie">
+        <source>serie</source>
+        <target>Série</target>
+      </trans-unit>
+      <trans-unit id="1AEWU4u" resname="list season">
+        <source>list season</source>
+        <target>Liste des saisons</target>
+      </trans-unit>
+      <trans-unit id="j44k9lx" resname="season">
+        <source>season</source>
+        <target>Saison</target>
+      </trans-unit>
+      <trans-unit id="FS6y1ph" resname="actor not found">
+        <source>actor not found</source>
+        <target>Aucun acteur trouvé pour cette série</target>
+      </trans-unit>
+      <trans-unit id="JiEhxTc" resname="edit">
+        <source>edit</source>
+        <target>Editer</target>
+      </trans-unit>
+      <trans-unit id="FgQYEBx" resname="return list programs">
+        <source>return list programs</source>
+        <target>Retourner à la listes des séries</target>
+      </trans-unit>
+      <trans-unit id="VszE3Py" resname="please">
+        <source>please</source>
+        <target>S'il vous plait</target>
+      </trans-unit>
+      <trans-unit id="XohImNo" resname="password">
+        <source>password</source>
+        <target>Mot de passe</target>
+      </trans-unit>
+      <trans-unit id="uuUoPjq" resname="create account">
+        <source>create account</source>
+        <target>Créer un compte</target>
+      </trans-unit>
+      <trans-unit id="cXVRejc" resname="or">
+        <source>or</source>
+        <target>ou</target>
+      </trans-unit>
+      <trans-unit id="qvIyBkY" resname="title">
+        <source>title</source>
+        <target>Titre</target>
+      </trans-unit>
+      <trans-unit id="EohvnQA" resname="number">
+        <source>number</source>
+        <target>Numéro</target>
+      </trans-unit>
+      <trans-unit id="dht62K1" resname="summary">
+        <source>summary</source>
+        <target>Résumé</target>
+      </trans-unit>
+      <trans-unit id="5gd8I34" resname="create new">
+        <source>create new</source>
+        <target>Créer un nouveau</target>
+      </trans-unit>
+      <trans-unit id="G8BLUpH" resname="index">
+        <source>index</source>
+        <target>Menu</target>
+      </trans-unit>
+      <trans-unit id="TLTqJVg" resname="year">
+        <source>year</source>
+        <target>Année</target>
+      </trans-unit>
+      <trans-unit id="fOYTaRP" resname="account.sign_in">
+        <source>account.sign_in</source>
+        <target>Se connecter</target>
+      </trans-unit>
+      <trans-unit id="U1doKCM" resname="account.register">
+        <source>account.register</source>
+        <target>Créer un compte</target>
+      </trans-unit>
+      <trans-unit id="UeXgSvf" resname="account.loggout">
+        <source>account.loggout</source>
+        <target>Se déconnecter</target>
+      </trans-unit>
+      <trans-unit id="gzB2fBG" resname="My_account">
+        <source>My_account</source>
+        <target>Mon Compte</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

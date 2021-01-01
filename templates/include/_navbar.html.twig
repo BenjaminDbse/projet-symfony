@@ -6,19 +6,23 @@
     </button>
     <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
         <ul class="navbar-nav">
-            <li class="nav-item active">
-                <a class="nav-link text-secondary" href="/programs/">Série<span class="sr-only">(current)</span></a>
+            <li class="nav-item active d-flex">
+                <a class="nav-link title-light" href="{{ path('app_index', {'_locale':'fr'}) }}">Fr</a>
+                <a class="nav-link title-light" href="{{ path('app_index', {'_locale':'en'}) }}">En</a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link text-secondary" href="/categories/">Categorie</a>
+                <a class="nav-link text-secondary" href="/programs/">{{ 'Series'|trans }}<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link text-secondary" href="/categories/">{{ 'Categorie'|trans }}</a>
             </li>
             <li class="nav-item active">
                 {% if app.user %}
                     {{ app.user.email }}
-                    <a href="{{ path('app_logout') }}"> Se déconnecter</a>
-                    <a href="{{ path('profil') }}">My account</a>
+                    <a href="{{ path('app_logout') }}">{{ 'loggout'|trans }}</a>
+                    <a href="{{ path('profil') }}">{{ 'My account'|trans }}</a>
                 {% else %}
-                    <a href="{{ path('app_login') }}"> Se connecter</a>
+                    <a href="{{ path('app_login') }}">{{ 'sign_in'|trans }}</a>
                 {% endif %}
             </li>
         </ul>

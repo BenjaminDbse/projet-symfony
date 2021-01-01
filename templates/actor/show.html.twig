@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h2>Acteurs {{ actor.name }}:</h2>
+    <h2>{{ 'actor'|trans }}  {{ actor.name }}:</h2>
     <ul>
         {% for program in programs %}
             <p><a href="{{ path("program_show", { 'slug': program.slug }) }}" >{{ program.title }}</a></p>

@@ -1,16 +1,16 @@
 {% extends 'base.html.twig' %}
 
-    {% block title %}All categories{% endblock %}
+    {% block title %}{{ 'All categories'|trans }} {% endblock %}
 
 {% block body %}
-    <h1>Toutes les catégories </h1>
+    <h1>{{ 'All categories'|trans }}</h1>
     {% for category in categories %}
         <div>
             <h2>{{ loop.index }}/ {{ category.name }}</h2>
-            <a class="btn btn-secondary" href="{{ path("category_show", { categoryName: category.name }) }}">Voir la categorie</a>
+            <a class="btn btn-secondary" href="{{ path("category_show", { categoryName: category.name }) }}">{{ 'Look category'|trans }}</a>
         </div>
     {% else %}
-        Aucune catégorie trouvée.
+        {{ 'no category'|trans }}
     {% endfor %}
-    <a class="btn btn-primary" href="{{ path('app_index') }}">Retour à l'accueil</a>
+    <a class="btn btn-primary" href="{{ path('app_index') }}">{{ 'return accueil'|trans }}</a>
 {% endblock %}

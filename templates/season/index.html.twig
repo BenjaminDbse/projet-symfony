@@ -8,10 +8,10 @@
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Number</th>
-                <th>Year</th>
-                <th>Description</th>
+                <th>ID</th>
+                <th>{{ 'number'|trans }}</th>
+                <th>{{ 'year'|trans }}</th>
+                <th>{{ 'summary'|trans }}</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -23,8 +23,8 @@
                 <td>{{ season.year }}</td>
                 <td>{{ season.description }}</td>
                 <td>
-                    <a href="{{ path('season_show', {'id': season.id}) }}">show</a>
-                    <a href="{{ path('season_edit', {'id': season.id}) }}">edit</a>
+                    <a href="{{ path('season_show', {'id': season.id}) }}">{{ 'look'|trans }}</a>
+                    <a href="{{ path('season_edit', {'id': season.id}) }}">{{ 'edit'|trans }}</a>
                 </td>
             </tr>
         {% else %}
@@ -35,5 +35,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('season_new') }}">Create new</a>
+    <a href="{{ path('season_new') }}">{{ 'create new'|trans }}</a>
 {% endblock %}

@@ -1,0 +1,51 @@
+welcome: Welcome
+My account: My account
+Categorie: Categories
+Series: Series
+programs: Programs
+List actor: Actor's list
+actor: Actor
+All categories: All categories
+Look category: View category
+no category: Category not found
+return accueil: Return accueil
+category: Category
+All programs of category: All programs of the category
+look: Look
+not programs found for category: Not programs found for category
+episode's list: episode's list
+of: of
+comments: Comments
+author: Author
+comment: comment
+rate: Rate
+add comment: Add commentary
+send: Send
+all programs: All programs
+search: Search
+programs not found: Programs not found
+add program: Add program
+episode list: episode's list
+episode: episode
+return list: Retour in the list
+serie: Serie
+list season: Season's list
+season: Season
+actor not found: Actor not found
+edit: Edit
+return list programs: Return program's list
+please: Please
+password: Password
+create account: Create account
+or: or
+title: Title
+number: Number
+summary: Summary
+create new: Create new
+index: index
+year: Year
+
+account:
+  sign_in: Sign In
+  register: Create Account
+  loggout: Disconnect

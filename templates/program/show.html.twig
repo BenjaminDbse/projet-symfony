@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Série #{{ program.id }}{% endblock %}
+{% block title %}{{ 'serie'|trans }} #{{ program.id }}{% endblock %}
 
 {% block body %}
     <div class="media">
@@ -13,25 +13,25 @@
                     </a>
                 {% endif %}</h1>
             <p>{{ program.summary }}</p>
-            <p>Catégorie : {{ program.category.name }}</p>
-            <h2>Voir les saisons disponible :</h2>
+            <p>{{ 'category'|trans }} : {{ program.category.name }}</p>
+            <h2>{{ 'list season'|trans }}</h2>
             <ul>
             {% for season in seasons %}
-                <li><a class="btn btn-secondary" href="{{ path('program_season_show', {program_slug: program.slug, seasonId: season.id}) }}">Saison {{ season.number }}</a></li>
+                <li><a class="btn btn-secondary" href="{{ path('program_season_show', {program_slug: program.slug, seasonId: season.id}) }}">{{ 'season'|trans }} {{ season.number }}</a></li>
             {% endfor %}
             </ul>
-            <h2>Acteurs :</h2>
+            <h2>{{ 'actor'|trans }}</h2>
             <ul>
                 {% for actor in program.actors %}
                     <li><p><a href="{{ path("actor_show", { id: actor.id }) }}" >{{ actor.name }}</a></p> </li>
                 {% else %}
-                    <li>Aucun acteur pour cette série</li>
+                    <li>{{ 'actor not found'|trans }}</li>
                 {% endfor %}
             </ul>
             {% if is_granted("ROLE_ADMIN") %}
-                <a class="btn btn-secondary" href="{{ path('program_edit', { 'slug': program.slug} ) }}">Éditer</a>
+                <a class="btn btn-secondary" href="{{ path('program_edit', { 'slug': program.slug} ) }}">{{ 'edit'|trans }}</a>
             {%endif%}
-            <a class="btn btn-primary" href="{{ path('program_index') }}">Retour à la liste des programmes</a>
+            <a class="btn btn-primary" href="{{ path('program_index') }}">{{ 'return list programs'|trans }}</a>
         </div>
     </div>
 {% endblock %}

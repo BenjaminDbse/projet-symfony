@@ -1,8 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} List actor {% endblock %}
+{% block title %} {{ 'List actor'|trans }} {% endblock %}
 
 {% block body %}
+    <h1>{{ 'List actor'|trans }}</h1>
     {% for actor in actors %}
     <p>{{ actor.name }}</p>
     {% endfor %}

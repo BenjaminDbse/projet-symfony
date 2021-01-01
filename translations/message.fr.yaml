@@ -1,0 +1,53 @@
+welcome: Bienvenue
+My account: Mon Compte
+Categorie: Nos Catégories
+Series: Nos séries
+programs: Série
+List actor: Liste d'acteurs
+actor: Acteur
+All categories: Toutes les catégories
+Look category: Voir la catégorie
+no category: Aucune catégorie trouvée
+return accueil: Retourner à l'accueil
+category: Catégorie
+All programs of category: Tous les programmes de la catégorie
+look: Voir
+not programs found for category: Aucune série trouvée pour la category
+episode's list: Liste des épisodes de la saison
+of: de
+comments: Commentaires
+author: Auteur
+comment: commentaire
+rate: Note
+add comment: Ajouter un commentaire
+send: envoyer
+all programs: Toutes les séries
+search: Rechercher
+programs not found: Aucune série trouvée
+add program: Ajouter une série
+episode list: Liste des episodes
+episode: episode
+return list: Retour à la liste
+serie: Série
+list season: Liste des saisons
+season: Saison
+actor not found: Aucun acteur trouvé pour cette série
+edit: Editer
+return list programs: Retourner à la listes des séries
+please: S'il vous plait
+password: Mot de passe
+create account: Créer un compte
+or: ou
+title: Titre
+number: Numéro
+summary: Résumé
+create new: Créer un nouveau
+index: Menu
+year: Année
+
+
+account:
+  sign_in: Se connecter
+  register: Créer un compte
+  loggout: Se déconnecter
+

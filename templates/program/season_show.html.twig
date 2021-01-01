@@ -1,14 +1,14 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Saison {{ season.number }} de {{ program.title }}</h1>
+    <h1>Saison {{ season.number }} {{ 'of'|trans }} {{ program.title }}</h1>
     <p>{{ season.description }}</p><br>
-    <p>Liste des épisodes :</p>
+    <p>{{ 'episode list'|trans }}</p>
     <ul>
         {% for episode in episodes %}
-            <li><a href="{{ path('program_episode_show', {program_slug: program.slug, season: season.id, episode_slug: episode.slug}) }}">Episode {{ episode.number }}: {{ episode.title }}</a></li>
+            <li><a href="{{ path('program_episode_show', {program_slug: program.slug, season: season.id, episode_slug: episode.slug}) }}">{{ 'episode'|trans }} {{ episode.number }}: {{ episode.title }}</a></li>
             <p>{{ episode.summary }}</p>
         {% endfor %}
     </ul>
-    <a class="btn btn-primary" href="{{ path("program_show", { 'slug': program.slug }) }}">Retour à la fiche</a>
+    <a class="btn btn-primary" href="{{ path("program_show", { 'slug': program.slug }) }}">{{ 'return list'|trans }}</a>
 {% endblock %}
