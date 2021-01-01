@@ -6,12 +6,17 @@ use App\Repository\ProgramRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass=ProgramRepository::class)
- *@UniqueEntity("title")
+ * @UniqueEntity(
+ *     "title",
+ *     message="Ce titre existe déja")
+ * @UniqueEntity(
+ *     "summary",
+ *     message="Ce synopsis existe déja")
  */
 class Program
 {
@@ -20,59 +25,53 @@ class Program
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    private ?int $id;
+    private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank
-     * @Assert\Length (max="255")
+     * @Assert\NotBlank(message="Le champ titre ne doit pas être vide")
+     * @Assert\Length(max="255", maxMessage="Le titre ne doit pas dépasser {{ limit }} caractères")
      */
-    private ?string $title;
+    private $title;
 
     /**
      * @ORM\Column(type="text")
-     * @Assert\NotBlank
+     * @Assert\NotBlank(message="Le champ summary ne doit pas être vide")
      * @Assert\Regex(
-     *     pattern="/[lL-uU]{4} [lL-uU]{5} [aA-lL]{2} [vV-iI]{3}/",
+     *     pattern="/([l-uL-U]{4}) ([b-lB-L]{5}) ([a-lA-L]{2}) ([e-vE-V]{3})/",
      *     match=false,
-     * message="On parle de vraies séries ici"
-     * )
-     *
+     *     message="On parle de vraies séries ici")
      */
-    private ?string $summary;
+    private $summary;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Assert\Length (max="255")
      */
-    private ?string $poster;
+    private $poster;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="programs")
      * @ORM\JoinColumn(nullable=false)
-     * @Assert\NotBlank
      */
-    private ?Category $category;
+    private $category;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Season::class, mappedBy="program")
+     */
+    private $seasons;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\Length (max="255")
      */
-    private ?string $country;
+    private $country;
 
     /**
      * @ORM\Column(type="integer")
      */
-    private ?int $year;
-
-    /**
-     * @ORM\OneToMany(targetEntity=Season::class, mappedBy="program_id")
-     */
-    private $number;
+    private $year;
 
     /**
      * @ORM\ManyToMany(targetEntity=Actor::class, mappedBy="programs")
-     *
      */
     private $actors;
 
@@ -82,14 +81,14 @@ class Program
     private $slug;
 
     /**
-     * @ORM\ManyToOne(targetEntity=User::class)
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="programs")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $owner;
+    private ?User $owner;
 
     public function __construct()
     {
-        $this->number = new ArrayCollection();
+        $this->seasons = new ArrayCollection();
         $this->actors = new ArrayCollection();
     }
 
@@ -146,6 +145,35 @@ class Program
         return $this;
     }
 
+    /**
+     * @return Collection|Season[]
+     */
+    public function getSeasons(): Collection
+    {
+        return $this->seasons;
+    }
+
+    public function addSeason(Season $season): self
+    {
+        if (!$this->seasons->contains($season)) {
+            $this->seasons[] = $season;
+            $season->setProgram($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSeason(Season $season): self
+    {
+        if ($this->seasons->removeElement($season)) {
+            if ($season->getProgram() === $this) {
+                $season->setProgram(null);
+            }
+        }
+
+        return $this;
+    }
+
     public function getCountry(): ?string
     {
         return $this->country;
@@ -166,36 +194,6 @@ class Program
     public function setYear(int $year): self
     {
         $this->year = $year;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Season[]
-     */
-    public function getNumber(): Collection
-    {
-        return $this->number;
-    }
-
-    public function addNumber(Season $number): self
-    {
-        if (!$this->number->contains($number)) {
-            $this->number[] = $number;
-            $number->setProgramId($this);
-        }
-
-        return $this;
-    }
-
-    public function removeNumber(Season $number): self
-    {
-        if ($this->number->removeElement($number)) {
-            // set the owning side to null (unless already changed)
-            if ($number->getProgramId() === $this) {
-                $number->setProgramId(null);
-            }
-        }
 
         return $this;
     }
