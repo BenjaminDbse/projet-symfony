@@ -6,7 +6,6 @@
  */
 
 // any CSS you import will output into a single css file (app.css in this case)
-import './styles/app.scss';
 import './styles/global.scss';
 import './styles/mail.scss';
 
@@ -18,4 +17,4 @@ $(document).ready(function() {
     $('[data-toggle="popover"]').popover();
 });
 
-console.log('Hello Webpack Encore! Edit me in assets/app.js');
+console.log('Hello Webpack Encore! Edit me in assets/global.js');

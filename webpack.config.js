@@ -27,6 +27,7 @@ Encore
      * and one CSS file (e.g. app.css) if your JavaScript imports CSS.
      */
     .addEntry('app', './assets/app.js')
+    .addEntry('globals','./assets/global.js')
     .addEntry('mail', './assets/styles/mail.scss')
     .addEntry('global', './assets/styles/global.scss')
     .addEntry('watchlist', './assets/watchlist.js')

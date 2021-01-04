@@ -4,7 +4,6 @@
         <meta charset="UTF-8">
         <link rel="icon" href="{{ asset('build/favicon.ico') }}"/>
         <title>{% block title %}{{ 'welcome'|trans }}!{% endblock %}</title>
-        <link rel="stylesheet" href="/build/app.css">
         <script src="https://kit.fontawesome.com/fed12f4e3a.js" crossorigin="anonymous"></script>
         {% block stylesheets %}
             {{ encore_entry_link_tags('global') }}
@@ -25,8 +24,8 @@
     {% endblock %}
         {% block body %}{% endblock %}
         {% block javascripts %}
-            {{ encore_entry_script_tags('global') }}
+            {{ encore_entry_script_tags('globals') }}
         {% endblock %}
-        <script src="/build/app.js"></script>
+        <script src="/build/global.js"></script>
     </body>
 </html>
