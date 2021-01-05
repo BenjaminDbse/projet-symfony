@@ -56,6 +56,8 @@ class User implements UserInterface
     public function __construct()
     {
         $this->watchlist = new ArrayCollection();
+        $this->comments = new ArrayCollection();
+        $this->programs = new ArrayCollection();
     }
 
     public function getId(): ?int

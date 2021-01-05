@@ -3,11 +3,15 @@
 namespace App\Entity;
 
 use App\Repository\ProgramRepository;
+use DateTime;
+use DateTimeInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Entity(repositoryClass=ProgramRepository::class)
@@ -17,6 +21,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  * @UniqueEntity(
  *     "summary",
  *     message="Ce synopsis existe déja")
+ * @Vich\Uploadable
  */
 class Program
 {
@@ -48,6 +53,19 @@ class Program
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $poster;
+
+     /**
+     * @Vich\UploadableField(mapping="poster_file", fileNameProperty="poster")
+     * @var File
+     * @Assert\File(
+     *      maxSize="100000",
+     *      maxSizeMessage="Le fichier doit faire moins de {{ limit }} octets.",
+     *      mimeTypes={"image/jpeg", "image/png", "image/jpg"},
+     *      mimeTypesMessage="Le fichier doit être au format .jpg, .png ou .jpeg."
+     * )
+     */
+    private $posterFile;
+
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="programs")
@@ -85,6 +103,11 @@ class Program
      * @ORM\JoinColumn(nullable=false)
      */
     private ?User $owner;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private DateTime $updatedAt;
 
     public function __construct()
     {
@@ -245,7 +268,33 @@ class Program
     public function setOwner(?User $owner): self
     {
         $this->owner = $owner;
+        return $this;
+    }
+
+    public function setPosterFile(File $image = null): Program
+    {
+        $this->posterFile = $image;
+        if ($image) {
+            $this->updatedAt = new \DateTime('now');
+        }
+        return $this;
+    }
+
+    public function getPosterFile(): ?File
+    {
+        return $this->posterFile;
+    }
+
+    public function getUpdatedAt(): DateTime
+    {
+        return $this->updatedAt;
+    }
+
+    public function setUpdatedAt( DateTime $updatedAt): self
+    {
+        $this->updatedAt = $updatedAt;
 
         return $this;
     }
+
 }

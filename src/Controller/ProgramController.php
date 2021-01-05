@@ -86,10 +86,10 @@ class ProgramController extends AbstractController
 
             $email = (new Email())
                 ->from($this->getParameter('mailer_from'))
-                ->to('your_email@example.com')
+                ->to('mailer_to')
                 ->subject('Une nouvelle série vient d\'être publiée !')
                 ->html($this->renderView('program/newProgramEmail.html.twig', ['program' => $program]));
-                $mailer->send($email);
+            $mailer->send($email);
 
             return $this->redirectToRoute('program_index');
         }

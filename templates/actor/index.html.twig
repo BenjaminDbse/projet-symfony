@@ -5,6 +5,7 @@
 {% block body %}
     <h1>{{ 'List actor'|trans }}</h1>
     {% for actor in actors %}
+        <img class="poster" src="{{ asset('uploads/' ~ actor.poster) }}" alt="{{ actor.name }} poster">
     <p>{{ actor.name }}</p>
     {% endfor %}
 {% endblock %}

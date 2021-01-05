@@ -2,9 +2,12 @@
 
 {% block body %}
     <h2>{{ 'actor'|trans }}  {{ actor.name }}:</h2>
+        <img class="poster" src="{{ asset('uploads/' ~ actor.poster) }}" alt="{{ actor.name }} poster">
+    </a>
     <ul>
         {% for program in programs %}
-            <p><a href="{{ path("program_show", { 'slug': program.slug }) }}" >{{ program.title }}</a></p>
+            <a href="{{ path("program_show", { slug: program.slug }) }}" class="btn btn-secondary">retour
+            </a>
         {% endfor %}
     </ul>
 {% endblock %}
